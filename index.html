@@ -831,6 +831,54 @@ Bryan4698@htb[/htb]$ tree .
   <p>嘗試使用已學指令刪除檔案與目錄。記住，線上搜尋解決方案是學習的一部分，不是作弊。這可以讓你了解不同方法、擴展知識並找到最高效的解決方案。</p>
 </section>
 
+<section id="ch9" class="chapter-card">
+  <h2 class="chapter-title">第九章：編輯檔案</h2>
+  
+  <p>在學會如何建立檔案和目錄後，我們接下來要學習如何編輯檔案。在 Linux 中有多種方式編輯檔案，最常見的文字編輯器包括 Vi 和 Vim。但我們先從 Nano 編輯器開始，因為它比較簡單易懂。</p>
+  
+  <h3>Nano 編輯器</h3>
+  <p>使用 Nano 創建並編輯檔案時，可以在啟動編輯器時直接指定檔名。例如，要建立並開啟一個名為 <code>notes.txt</code> 的新檔案：</p>
+  <pre><code>Bryan4698@htb[/htb]$ nano notes.txt</code></pre>
+  <p>這個命令會開啟 Nano 編輯器，讓你立即開始編輯檔案。Nano 的介面簡單直覺，非常適合快速編輯文字檔案。</p>
+  
+  <h4>基本 Nano 指令</h4>
+  <ul>
+    <li><code>CTRL + W</code> - 搜尋文字</li>
+    <li><code>CTRL + O</code> - 儲存檔案</li>
+    <li><code>CTRL + X</code> - 離開編輯器</li>
+  </ul>
+
+  <h3>回到 Shell</h3>
+  <p>要查看檔案內容，可以使用：</p>
+  <pre><code>Bryan4698@htb[/htb]$ cat notes.txt
+這裡可以輸入我們想記錄的所有內容。</code></pre>
+  
+  <p>在 Linux 系統中，像 <code>/etc/passwd</code> 這類檔案對滲透測試人員非常重要，如果權限設定不當，可能會洩漏敏感資訊或導致權限提升。</p>
+  
+  <h3>Vim 編輯器</h3>
+  <p>Vim 是 Vi 的改良版，提供強大的模式化文字編輯功能。Vim 可以與 grep、awk、sed 等工具整合，使編輯工作快速且高效。</p>
+  
+  <h4>Vim 模式</h4>
+  <ul>
+    <li><strong>Normal（一般模式）</strong> - 預設模式，輸入為指令而非文字。</li>
+    <li><strong>Insert（插入模式）</strong> - 將文字插入編輯區。</li>
+    <li><strong>Visual（視覺模式）</strong> - 標記文字區塊，方便編輯或複製。</li>
+    <li><strong>Command（指令模式）</strong> - 在底部輸入單行指令，如排序、取代文字。</li>
+    <li><strong>Replace（覆蓋模式）</strong> - 輸入文字覆蓋原有內容。</li>
+    <li><strong>Ex 模式</strong> - 可連續執行多個指令，而不用每次回到一般模式。</li>
+  </ul>
+
+  <p>從指令模式退出 Vim：</p>
+  <pre><code>:q</code></pre>
+
+  <h4>VimTutor 教學</h4>
+  <p>Vim 提供 tutor 模式，幫助熟悉各種指令。啟動方式：</p>
+  <pre><code>Bryan4698@htb[/htb]$ vimtutor</code></pre>
+  <p>該教學會引導你學習足夠的指令，使你能有效使用 Vim。</p>
+</section>
+
+
+
 <!-- 第十章：編輯檔案 -->
 <section id="ch10" class="chapter-card">
   <h2 class="chapter-title">第十章：編輯檔案</h2>
@@ -918,43 +966,6 @@ Bryan4698@htb[/htb]$ vimtutor
   <p>VimTutor 約需 25~30 分鐘完成，透過實際操作學習 Vim 指令，練習過程會修改範例文字檔，建議先複製檔案練習。</p>
 
 </section>
-
-
-    <!-- 第十章 -->
-    <section>
-      <h2 class="chapter-title">第十章：尋找檔案與資料夾</h2>
-      <p>有效查找系統內檔案能大幅提升作業效率。常用指令如下：</p>
-      <div class="card my-3">
-        <div class="card-header">which 指令</div>
-        <div class="card-body">
-          <pre><code>which 程式名稱</code></pre>
-          <ul>
-            <li>顯示可執行檔案路徑，判斷工具是否安裝。</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card my-3">
-        <div class="card-header">find 指令進階用法</div>
-        <div class="card-body">
-          <pre><code>find 資料夾 選項</code></pre>
-          <ul>
-            <li>可依檔案型態、檔名、所有者、大小、日期等條件進階查詢。</li>
-            <li>範例：<code>find / -type f -name "*.conf" -user root -size +20k -exec ls -al {} \;</code></li>
-            <li>搭配 <code>2>/dev/null</code> 可忽略無權限錯誤訊息。</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card my-3">
-        <div class="card-header">locate 指令</div>
-        <div class="card-body">
-          <pre><code>sudo updatedb
-locate 關鍵字</code></pre>
-          <ul>
-            <li>快速利用本機資料庫「全域搜尋」檔案名。</li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
 <!-- 第十一章：檔案描述符與重定向 -->
 <section id="ch11" class="chapter-card">
